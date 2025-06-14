@@ -1,0 +1,613 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+* {
+  text-decoration: none;
+}
+
+* {
+  list-style: none;
+
+}
+
+.container {
+  position: relative;
+  min-height: 90vh;
+  background-color: #ffffff;
+
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10;
+  width: 100%;
+  height: 100%;
+  /* background-image: url(imeges/P1.jpg); */
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(30%);
+  z-index: -1;
+
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu.transparent {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.logo a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: #000;
+  font-size: 20px;
+}
+
+.logo a:hover {
+  opacity: 0.5;
+}
+
+.logo p {
+  float: left;
+  display: block;
+  padding-left: 8px;
+  padding-top: 10px;
+  font-size: 1rem;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.menu ul {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 0 14px;
+}
+
+.menu li a {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.menu li a:hover {
+  color: #644002;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1100;
+}
+
+.menu-toggle .menu-icon {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #333;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-toggle .menu-icon::before {
+  top: -8px;
+}
+
+.menu-toggle .menu-icon::after {
+  top: 8px;
+}
+
+@media (max-width: 768px) {
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 20px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .menu ul.show {
+    display: flex;
+  }
+
+  .menu li a {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-toggle.active .menu-icon {
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle.active .menu-icon::before {
+    transform: rotate(90deg);
+    top: 0;
+  }
+
+  .menu-toggle.active .menu-icon::after {
+    transform: rotate(90deg);
+    top: 0;
+    opacity: 0;
+  }
+}
+
+
+/* Wrapper and Form Styling */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 1000px;
+  width: 90%;
+  margin: 30px auto;
+}
+
+.contact-wrap {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.form-wrap {
+  flex: 2;
+}
+
+.contact-wrap h3 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
+  position: relative;
+}
+
+.contact-wrap .form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-bottom: 2px solid #000000;
+  outline: none;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+textarea {
+  resize: none;
+  /* ปิดการปรับขนาดของ textarea */
+  height: 100px;
+  /* ตั้งความสูงเริ่มต้น */
+}
+
+input:focus,
+textarea:focus {
+  border-bottom-color: #a36500;
+  /* เปลี่ยนสีเส้นขอบเมื่อโฟกัส */
+}
+
+/* เพิ่มไอคอนหรือ Effect ในช่องข้อความ */
+.form-group::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #a36500;
+  transition: width 0.3s;
+}
+
+input:focus+.form-group::after,
+textarea:focus+.form-group::after {
+  width: 100%;
+}
+
+.contact-wrap .form-group button[type="submit"] {
+  background: #000000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+  width: fit-content;
+
+}
+
+.contact-wrap .form-group button[type="submit"]:hover {
+  background: #a36500;
+}
+
+.contact-image {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.c1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.c1 i {
+  font-size: 20px;
+  color: #222;
+  display: flex;
+  align-items: center;
+}
+
+.c1 p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.c1 span {
+  color: #444;
+  margin-right: 5px;
+}
+
+.c1 a,b{
+  font-weight: lighter;
+  text-decoration: none;
+  color: #555;
+}
+
+.c1 a:hover {
+  text-decoration: underline;
+}
+
+/* ปรับให้ icon กับข้อความอยู่ในแนวเดียวกัน */
+.c1 i p {
+  display: inline;
+  margin-left: 5px;
+}
+
+/* footer */
+.icon {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  min-height: 20vh;
+}
+
+.ficon {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.ficon a {
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  margin: 10px;
+  border-radius: 50px;
+  height: auto;
+}
+
+.ficon a i {
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  opacity: 0.9;
+  height: auto;
+}
+
+.ficon a:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.ficon a i:hover {
+  color: rgb(0, 0, 0);
+  transition: 0.2s;
+}
+
+.icon ul {
+  display: flex;
+  justify-content: center;
+}
+
+.icon ul li a {
+  color: rgb(0, 0, 0);
+  margin: 10px;
+  font-size: 1em;
+  opacity: 0.5;
+  transition: 0.5s;
+  font-weight: bold;
+  text-decoration-line: underline;
+}
+
+.icon ul li a:hover {
+  opacity: 1;
+}
+
+.icon p {
+  color: rgb(0, 0, 0);
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: 0.8em;
+  transition: 0.5s;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+/* Media Queries */
+/* Tablet (481px - 768px) */
+@media screen and (max-width: 768px) {
+  
+  .contact-wrap h3 {
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  textarea {
+    resize: none;
+    /* ปิดการปรับขนาดของ textarea */
+    height: 100px;
+    /* ตั้งความสูงเริ่มต้น */
+  }
+  .contact-image {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+    max-width: 250px;
+    margin: auto;
+  }
+  
+  .c1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .c1 i {
+    font-size: 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+  }
+  
+  .c1 p {
+    margin: 0;
+    font-size: 10px;
+    color: #555;
+    display: flex;
+    align-items: center;
+  }
+  
+  .c1 span {
+    color: #444;
+    margin-right: 5px;
+  }
+  
+  .c1 a,b{
+    font-weight: lighter;
+    text-decoration: none;
+    color: #555;
+  }
+  
+  .c1 a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ปรับให้ icon กับข้อความอยู่ในแนวเดียวกัน */
+  .c1 i p {
+    display: inline;
+    margin-left: 5px;
+  }
+
+  .icon {
+    margin: 50px auto;
+    min-height: 15vh;
+    max-width: 90%;
+    margin-top: 90px;
+  }
+
+  .ficon {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .icon p {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    flex-direction: column;  /* เปลี่ยนจากแถวเป็นคอลัมน์ */
+    padding: 15px;
+    margin: 15px;
+  }
+
+  .contact-wrap {
+    display: flex;
+    flex-direction: column;  /* ตั้งค่าให้เป็นคอลัมน์ */
+    align-items: center;
+    gap: 20px;
+  }
+
+  .form-wrap {
+    width: 100%;  /* ให้ฟอร์มเต็มความกว้าง */
+  }
+
+  .contact-wrap h3 {
+    text-align: center;  /* ทำให้หัวข้ออยู่กลาง */
+    font-size: 1.5em;  /* ลดขนาดฟอนต์ให้พอดี */
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  .contact-image {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .c1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .c1 i {
+    font-size: 20px;
+    color: #222;
+    display: flex;
+    align-items: center;
+  }
+  
+  .c1 p {
+    margin: 0;
+    font-size: 12px;
+    color: #555;
+    display: flex;
+    align-items: center;
+  }
+  
+  .c1 span {
+    color: #444;
+    margin-right: 5px;
+  }
+  
+  .c1 a,b{
+    font-weight: lighter;
+    text-decoration: none;
+    color: #555;
+  }
+  
+  .c1 a:hover {
+    text-decoration: underline;
+  }
+  .icon {
+    margin: 30px auto;
+    min-height: 10vh;
+    max-width: 95%;
+    margin-top: 100px;
+  }
+
+  .ficon {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ficon a {
+    padding: 8px;
+    margin: 5px;
+  }
+
+  .ficon a i {
+    font-size: 1.2em;
+  }
+
+  .icon p {
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+}

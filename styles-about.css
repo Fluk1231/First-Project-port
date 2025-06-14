@@ -1,0 +1,519 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+* {
+  text-decoration: none;
+}
+
+* {
+  list-style: none;
+
+}
+
+.container {
+  position: relative;
+  min-height: 90vh;
+  background-color: #ffffff;
+
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10;
+  width: 100%;
+  height: 100%;
+  /* background-image: url(imeges/P1.jpg); */
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(30%);
+  z-index: -1;
+
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu.transparent {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.logo a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: #000;
+  font-size: 20px;
+}
+
+.logo a:hover{
+  opacity: 0.5;
+}
+
+.logo p{
+  float: left;
+  display: block;
+  padding-left: 8px;
+  padding-top: 10px;
+  font-size: 1rem;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.menu ul {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li{
+  padding: 0 14px;
+}
+.menu li a {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.menu li a:hover {
+  color: #644002;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1100;
+}
+
+.menu-toggle .menu-icon {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #333;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background-color: #333; 
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-toggle .menu-icon::before {
+  top: -8px;
+}
+
+.menu-toggle .menu-icon::after {
+  top: 8px;
+}
+
+@media (max-width: 768px) {
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 20px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .menu ul.show {
+    display: flex;
+  }
+
+  .menu li a {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-toggle.active .menu-icon {
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle.active .menu-icon::before {
+    transform: rotate(90deg);
+    top: 0;
+  }
+
+  .menu-toggle.active .menu-icon::after {
+    transform: rotate(90deg);
+    top: 0;
+    opacity: 0;
+  }
+}
+
+
+body {
+background-color: #ffffff; /* พื้นหลังของทั้งหน้า */
+color: #000000; /* สีตัวอักษรหลัก */
+font-family: 'Arial', sans-serif; /* ฟอนต์ที่อ่านง่าย */
+margin: 0;
+padding: 0;
+line-height: 1.5; /* ระยะห่างระหว่างบรรทัด */
+}
+
+.about {
+max-width: 900px; /* กำหนดความกว้าง */
+margin: 90px auto; /* จัดกึ่งกลาง */
+padding: 20px; /* ระยะห่างภายใน */
+/* background: #444; สีพื้นหลัง */
+border-radius: 10px; /* มุมโค้ง */
+/* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); เพิ่มเงา */
+display: flex; /* จัดให้อยู่ในรูปแบบ flexbox */
+align-items: flex-start; /* จัดเรียงแนวตั้งให้ชิดขอบบน */
+gap: 40px; /* ระยะห่างระหว่างเนื้อหาและรูปภาพ */
+}
+
+.about-content {
+flex: 2; /* พื้นที่สำหรับเนื้อหา */
+}
+
+.about-content h1 {
+text-align: center;
+font-size: 2em;
+color: #000000;
+margin-bottom: 5px;
+letter-spacing: 2px;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* เพิ่มเงาให้หัวข้อ */
+}
+
+.about-content p {
+font-size: 1rem;
+text-align: justify;
+margin-bottom: 8px;
+color: #000000;
+text-indent: 50px;
+opacity: 0.7;
+}
+
+.about-image {
+flex: 1; /* พื้นที่สำหรับรูปภาพ */
+display: flex;
+justify-content: center; /* จัดรูปให้อยู่ตรงกลาง */
+align-items: center;
+}
+
+.about-image img {
+max-width: 100%; /* ทำให้รูปปรับตามขนาดกล่อง */
+height: auto; /* รักษาสัดส่วนของรูป */
+border-radius: 10px; /* มุมโค้งของรูป */
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* เงาของรูป */
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* เพิ่มเอฟเฟกต์ */
+margin-top: 1.7em;
+
+}
+
+.about-image img:hover {
+transform: scale(1.05); /* ขยายรูปเล็กน้อยเมื่อชี้ */
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8); /* เพิ่มเงาเมื่อชี้ */
+}
+
+/* Media Queries สำหรับแท็บเล็ต (≤768px) */
+@media (max-width: 768px) {
+  .about {
+    flex-direction: row; /* จัดเรียงแนวนอน (เหมือนเดิม) */
+    gap: 20px; /* ลดระยะห่าง */
+  }
+
+  .about-content h1 {
+    margin-top: -70px;
+    font-size: 1.8em; /* ลดขนาดฟอนต์หัวข้อเล็กน้อย */
+  }
+
+  .about-content p {
+    font-size: 0.9rem; /* ลดขนาดฟอนต์เนื้อหาเล็กน้อย */
+  }
+}
+
+@media (max-width: 660px) {
+  .about {
+    flex-direction: column; /* จัดเรียงแนวตั้ง */
+    align-items: center; /* จัดเนื้อหาและรูปให้อยู่ตรงกลาง */
+    gap: 30px; /* ลดระยะห่าง */
+  }
+
+  .about-content h1 {
+    font-size: 1.8em; /* ลดขนาดฟอนต์หัวข้อ */
+    margin-bottom: 10px; /* เพิ่มระยะห่างด้านล่าง */
+  }
+
+  .about-content p {
+    font-size: 0.95rem; /* ลดขนาดฟอนต์เนื้อหา */
+    text-indent: 30px; /* ลดระยะย่อหน้า */
+  }
+
+  .about-image img {
+    margin-top: 0; /* ลดระยะห่างด้านบน */
+    border-radius: 8px; /* ลดความโค้งมนเล็กน้อย */
+  }
+}
+
+/* Media Queries สำหรับมือถือ (≤480px) */
+@media (max-width: 480px) {
+  .about {
+    flex-direction: column-reverse;
+    gap: 20px; /* ระยะห่างระหว่างเนื้อหาและรูป */
+  }
+
+  .about-content h1 {
+    font-size: 1.5em; /* ลดขนาดฟอนต์หัวข้อ */
+    text-align: center; /* จัดให้อยู่กึ่งกลาง */
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .about-content p {
+    font-size: 0.85rem; /* ลดขนาดฟอนต์เนื้อหา */
+    text-indent: 20px; /* ลดระยะย่อหน้า */
+    text-align: justify; /* จัดเนื้อหาให้อ่านง่าย */
+  }
+
+  .about-image img {
+    margin-top: 0; /* ลดระยะห่างด้านบน */
+    border-radius: 5px; /* ลดความโค้งมนของรูป */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* ลดเงา */
+  }
+}
+
+/* Media Queries สำหรับมือถือ (≤375px) */
+@media (max-width: 376px) {
+  .about {
+    flex-direction: column-reverse;
+    gap: 20px; /* ระยะห่างระหว่างเนื้อหาและรูป */
+    
+  }
+
+  .about-content h1 {
+    font-size: 1.5em; /* ลดขนาดฟอนต์หัวข้อ */
+    text-align: center; /* จัดให้อยู่กึ่งกลาง */
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .about-content p {
+    font-size: 0.85rem; /* ลดขนาดฟอนต์เนื้อหา */
+    text-indent: 20px; /* ลดระยะย่อหน้า */
+    text-align: justify; /* จัดเนื้อหาให้อ่านง่าย */
+  }
+
+  .about-image img {
+    margin-top: 0; /* ลดระยะห่างด้านบน */
+    border-radius: 5px; /* ลดความโค้งมนของรูป */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* ลดเงา */
+  }
+}
+
+/* Media Queries สำหรับมือถือ (≤320px) */
+@media (max-width: 320px) {
+  .about {
+    flex-direction: column-reverse;
+    gap: 20px; /* ระยะห่างระหว่างเนื้อหาและรูป */
+  }
+
+  .about-content h1 {
+    font-size: 1.5em; /* ลดขนาดฟอนต์หัวข้อ */
+    text-align: center; /* จัดให้อยู่กึ่งกลาง */
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .about-content p {
+    font-size: 0.85rem; /* ลดขนาดฟอนต์เนื้อหา */
+    text-indent: 20px; /* ลดระยะย่อหน้า */
+    text-align: justify; /* จัดเนื้อหาให้อ่านง่าย */
+  }
+
+  .about-image img {
+    margin-top: 0; /* ลดระยะห่างด้านบน */
+    border-radius: 5px; /* ลดความโค้งมนของรูป */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* ลดเงา */
+  }
+}
+
+.resume {
+max-width: 800px; /* กำหนดความกว้าง */
+/* height: 400vh; */
+margin: -60px auto; /* จัดกึ่งกลาง */
+padding: 10px 20px; /* เพิ่มระยะห่างภายใน */
+border-radius: 15px; /* มุมโค้ง */
+text-align: center; /* จัดเนื้อหาให้อยู่กึ่งกลาง */
+color: #000000; /* สีข้อความ */
+font-family: 'Arial', sans-serif; /* ฟอนต์ */
+animation: fadeIn 1s ease-in-out; /* เพิ่มเอฟเฟกต์ Animation */
+background: #7a7a7a87;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.resume h1 {
+font-size: 2em; /* ขนาดตัวอักษรของหัวข้อ */
+margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+letter-spacing: 2px; /* ระยะห่างระหว่างตัวอักษร */
+color: #000000; /* สีทองเพื่อความหรูหรา */
+text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5); /* เพิ่มเงาให้หัวข้อ */
+}
+
+.resume img {
+max-width: 90%; /* ทำให้รูปปรับตามขนาดกล่อง */
+height: auto; /* รักษาสัดส่วนของรูป */
+margin-bottom: 20px; /* ระยะห่างระหว่างรูป */
+border-radius: 15px; /* มุมโค้งของรูป */
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* เงาของรูป */
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* เพิ่ม Animation */
+}
+
+.resume img:hover {
+transform: scale(1.05); /* ขยายรูปเล็กน้อยเมื่อชี้ */
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8); /* เพิ่มเงาเมื่อชี้ */
+}
+
+/* footer */
+.icon {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  margin: 100px;
+  min-height:20vh;
+}
+
+.ficon {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.ficon a {
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.ficon a i {
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  opacity: 0.9;
+}
+
+.ficon a:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.ficon a i:hover {
+  color: rgb(0, 0, 0);
+  transition: 0.2s;
+}
+
+.icon p{
+  color: rgb(0, 0, 0);
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: 0.8em;
+  transition: 0.5s;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+/* Media Queries */
+/* Tablet (481px - 768px) */
+@media screen and (max-width: 768px) {
+  .icon {
+    margin: 50px auto;
+    min-height: 15vh;
+    max-width: 90%;
+    margin-top: 90px;
+  }
+
+  .ficon {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .icon p {
+    font-size: 0.9em;
+  }
+}
+
+/* Mobile (≤480px) */
+@media screen and (max-width: 480px) {
+  .icon {
+    margin: 30px auto;
+    min-height: 10vh;
+    max-width: 95%;
+    margin-top: 100px;
+  }
+
+  .ficon {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ficon a {
+    padding: 8px;
+    margin: 5px;
+  }
+
+  .ficon a i {
+    font-size: 1.2em;
+  }
+
+  .icon p {
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+}
+
+
+
+

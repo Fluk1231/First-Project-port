@@ -1,0 +1,669 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+* {
+  text-decoration: none;
+}
+
+* {
+  list-style: none;
+
+}
+.container {
+  position: relative;
+  min-height: 90vh;
+  background-color: #ffffff;
+
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10;
+  width: 100%;
+  height: 100%;
+  /* background-image: url(imeges/P1.jpg); */
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(30%);
+  z-index: -1;
+
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu.transparent {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.logo a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: #000;
+  font-size: 20px;
+}
+
+.logo a:hover{
+  opacity: 0.5;
+}
+
+.logo p{
+  float: left;
+  display: block;
+  padding-left: 8px;
+  padding-top: 10px;
+  font-size: 1rem;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.menu ul {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li{
+  padding: 0 14px;
+}
+.menu li a {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.menu li a:hover {
+  color: #644002;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1100;
+}
+
+.menu-toggle .menu-icon {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #333;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background-color: #333; 
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-toggle .menu-icon::before {
+  top: -8px;
+}
+
+.menu-toggle .menu-icon::after {
+  top: 8px;
+}
+
+@media (max-width: 768px) {
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 20px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .menu ul.show {
+    display: flex;
+  }
+
+  .menu li a {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-toggle.active .menu-icon {
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle.active .menu-icon::before {
+    transform: rotate(90deg);
+    top: 0;
+  }
+
+  .menu-toggle.active .menu-icon::after {
+    transform: rotate(90deg);
+    top: 0;
+    opacity: 0;
+  }
+}
+
+.content {
+  width: 80%;
+  margin: 0 auto;
+  position: absolute;
+  top: 30%;
+  left: 9%;
+  transform: translate(-50, 50);
+  display: flex;
+}
+
+.content .header,
+.grid-card {
+  width: 50%;
+  position: relative;
+}
+
+.content .header {
+  margin-top: -3em;
+  color: #000000;
+  padding: 50px;
+}
+
+.content .header h4 {
+  width: 100%;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  padding-bottom: 25px;
+}
+
+.content .header h3 {
+  color: #000000;
+  margin-bottom: 25px;
+}
+
+.content .header h1 {
+  font-size: 2.5rem;
+  margin-bottom: -8px;
+
+}
+
+.content .header h2 {
+  font-size: 2.5rem;
+  text-indent: 80px;
+
+}
+
+.content .header p {
+  margin-top: -1em;
+  font-size: 1rem;
+  opacity: 0.7;
+  text-indent: 50px;
+}
+
+.grid-card {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 150px 150px;
+  object-fit: cover;
+  grid-gap: 2px
+}
+
+.grid-card .box {
+  width: 90%;
+  height: 90%;
+  margin: 0 10px;
+  border-radius: 25px;
+  background-size: cover;
+  transition: 0.4s;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.427);
+}
+
+.grid-card .box h2{
+  font-size: 20px;
+}
+
+.bg1 {
+  background-image: url(imeges/P18.jpg);
+  background-position: center;
+  background-size: contain;
+}
+
+.bg2 {
+  background-image: url(imeges/performance1.png);
+  background-position: center;
+  background-size: contain;
+}
+
+.bg3 {
+  background-image: url(imeges/B3.jpg);
+  background-position: center;
+  background-size: contain;
+}
+
+.bg4 {
+  background-image: url(imeges/P20.jpg);
+  background-position: right;
+  background-size: contain;
+}
+
+.content .box h2 {
+  position: absolute;
+  bottom: 7px;
+  left: 11px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.345);
+  border-radius: 5px;
+
+}
+
+.content .box:hover {
+  transform: translateY(-15px);
+
+}
+
+@media (max-width: 926px) {
+  .content {
+    flex-direction: column; /* เรียงในแนวตั้ง */
+    align-items: center; /* จัดให้อยู่ตรงกลาง */
+    top: 23%;
+    transform: none; /* ยกเลิก transform */
+  }
+
+  .content .header {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    padding: 20px; /* ลด padding ให้เหมาะสม */
+    text-align: center; /* จัดข้อความตรงกลาง */
+  }
+
+  .content .header h1{
+    margin-right: 50px;
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+  .content .header h2 {
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header h4 {
+    margin-top: 8px;
+    margin-bottom: 9px;
+    font-size: 16.5px; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header p {
+    font-size: 1rem; /* คงขนาดฟอนต์ */
+    text-indent: 0; /* ยกเลิกการย่อหน้า */
+    
+  }
+
+  .grid-card {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    grid-template-columns: repeat(2, 1fr); /* สร้าง 2 คอลัมน์ */
+    grid-template-rows: repeat(2, auto); /* สร้าง 2 แถว */
+    grid-gap: 10px; /* เพิ่มช่องว่างระหว่างการ์ด */
+  }
+
+  .grid-card .box {
+    width: 100%; /* ให้การ์ดขยายเต็มความกว้างของคอลัมน์ */
+    height: 140px; /* ปรับขนาดการ์ด */
+    margin: 0; /* ยกเลิกระยะขอบ */
+    border-radius: 15px; /* ลดความโค้ง */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* ลดความเข้มของเงา */
+  }
+
+  .grid-card .box h2 {
+    font-size: 16px; /* ลดขนาดฟอนต์ของข้อความในการ์ด */
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column; /* เรียงในแนวตั้ง */
+    align-items: center; /* จัดให้อยู่ตรงกลาง */
+    top: 23%;
+    transform: none; /* ยกเลิก transform */
+  }
+
+  .content .header {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    padding: 20px; /* ลด padding ให้เหมาะสม */
+    text-align: center; /* จัดข้อความตรงกลาง */
+  }
+
+  .content .header h1{
+    margin-right: 50px;
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+  .content .header h2 {
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header h4 {
+    margin-top: 8px;
+    margin-bottom: 9px;
+    font-size: 16.5px; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header p {
+    font-size: 1rem; /* คงขนาดฟอนต์ */
+    text-indent: 0; /* ยกเลิกการย่อหน้า */
+    
+  }
+
+  .grid-card {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    grid-template-columns: repeat(2, 1fr); /* สร้าง 2 คอลัมน์ */
+    grid-template-rows: repeat(2, auto); /* สร้าง 2 แถว */
+    grid-gap: 10px; /* เพิ่มช่องว่างระหว่างการ์ด */
+  }
+
+  .grid-card .box {
+    width: 100%; /* ให้การ์ดขยายเต็มความกว้างของคอลัมน์ */
+    height: 140px; /* ปรับขนาดการ์ด */
+    margin: 0; /* ยกเลิกระยะขอบ */
+    border-radius: 15px; /* ลดความโค้ง */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* ลดความเข้มของเงา */
+  }
+
+  .grid-card .box h2 {
+    font-size: 16px; /* ลดขนาดฟอนต์ของข้อความในการ์ด */
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    flex-direction: column; /* เรียงในแนวตั้ง */
+    align-items: center; /* จัดให้อยู่ตรงกลาง */
+    top: 23%;
+    transform: none; /* ยกเลิก transform */
+  }
+
+  .content .header {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    padding: 20px; /* ลด padding ให้เหมาะสม */
+    text-align: center; /* จัดข้อความตรงกลาง */
+  }
+
+  .content .header h1{
+    margin-right: 50px;
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+  .content .header h2 {
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header h4 {
+    margin-top: 8px;
+    margin-bottom: 9px;
+    font-size: 16.5px; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header p {
+    font-size: 0.9rem; /* คงขนาดฟอนต์ */
+    margin-top: -1em;
+    opacity: 0.7;
+    text-indent: 20px;
+    width: 298px;
+  }
+
+  .grid-card {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    grid-template-columns: repeat(2, 1fr); /* สร้าง 2 คอลัมน์ */
+    grid-template-rows: repeat(2, auto); /* สร้าง 2 แถว */
+    grid-gap: 10px; /* เพิ่มช่องว่างระหว่างการ์ด */
+  }
+
+  .grid-card .box {
+    width: 100%; /* ให้การ์ดขยายเต็มความกว้างของคอลัมน์ */
+    height: 140px; /* ปรับขนาดการ์ด */
+    margin: 0; /* ยกเลิกระยะขอบ */
+    border-radius: 15px; /* ลดความโค้ง */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* ลดความเข้มของเงา */
+  }
+
+  .grid-card .box h2 {
+    font-size: 16px; /* ลดขนาดฟอนต์ของข้อความในการ์ด */
+  }
+}
+
+@media (max-width: 320px) {
+  .content {
+    flex-direction: column; /* เรียงในแนวตั้ง */
+    align-items: center; /* จัดให้อยู่ตรงกลาง */
+    top: 23%;
+    transform: none; /* ยกเลิก transform */
+  }
+
+  .content .header {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    padding: 20px; /* ลด padding ให้เหมาะสม */
+    text-align: center; /* จัดข้อความตรงกลาง */
+  }
+
+  .content .header h1{
+    margin-right: 50px;
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+  .content .header h2 {
+    font-size: 2rem; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header h4 {
+    margin-top: 8px;
+    margin-bottom: 9px;
+    font-size: 16.5px; /* ลดขนาดฟอนต์ */
+  }
+
+  .content .header p {
+    font-size: 0.7em; /* คงขนาดฟอนต์ */
+    text-indent: 0; /* ยกเลิกการย่อหน้า */
+    width: 250px;
+    right: 10px;
+  }
+
+  .grid-card {
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    grid-template-columns: repeat(2, 1fr); /* สร้าง 2 คอลัมน์ */
+    grid-template-rows: repeat(2, auto); /* สร้าง 2 แถว */
+    grid-gap: 10px; /* เพิ่มช่องว่างระหว่างการ์ด */
+  }
+
+  .grid-card .box {
+    width: 100%; /* ให้การ์ดขยายเต็มความกว้างของคอลัมน์ */
+    height: 140px; /* ปรับขนาดการ์ด */
+    margin: 0; /* ยกเลิกระยะขอบ */
+    border-radius: 15px; /* ลดความโค้ง */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* ลดความเข้มของเงา */
+  }
+
+  .grid-card .box h2 {
+    font-size: 16px; /* ลดขนาดฟอนต์ของข้อความในการ์ด */
+  }
+}
+
+/* footer */
+.icon {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  min-height:20vh;
+}
+
+.ficon {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.ficon a {
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.ficon a i {
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  opacity: 0.9;
+}
+
+.ficon a:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.ficon a i:hover {
+  color: rgb(0, 0, 0);
+  transition: 0.2s;
+}
+
+.icon p{
+  color: rgb(0, 0, 0);
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: 0.8em;
+  transition: 0.5s;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1024px) {
+  .icon {
+    min-height: 15vh; /* ปรับขนาดความสูงให้น้อยลง */
+    padding: 20px 10px;
+    margin-top: 20%;
+  }
+
+  .ficon {
+    flex-direction: row; /* ให้ไอคอนเรียงแนวนอน */
+    flex-wrap: wrap;
+    gap: 15px; /* เพิ่มระยะห่างระหว่างไอคอน */
+  }
+
+  .icon p {
+    display: block;
+    text-align: center;
+    font-size: 1em; /* ขยายขนาดข้อความให้ใหญ่ขึ้น */
+    margin-top: 15px;
+    opacity: 0.7; /* เพิ่มความชัดของข้อความ */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .icon {
+    min-height: 15vh; /* ปรับขนาดความสูงให้น้อยลง */
+    padding: 20px 10px;
+    margin-top: 30%;
+  }
+
+  .ficon {
+    flex-direction: row; /* ให้ไอคอนเรียงแนวนอน */
+    flex-wrap: wrap;
+    gap: 15px; /* เพิ่มระยะห่างระหว่างไอคอน */
+  }
+
+  .icon p {
+    display: block;
+    text-align: center;
+    font-size: 1em; /* ขยายขนาดข้อความให้ใหญ่ขึ้น */
+    margin-top: 15px;
+    opacity: 0.7; /* เพิ่มความชัดของข้อความ */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .icon {
+    min-height: 15vh; /* ปรับขนาดความสูงให้น้อยลง */
+    padding: 20px 10px;
+    margin-top: 65%;
+  }
+
+  .ficon {
+    flex-direction: row; /* ให้ไอคอนเรียงแนวนอน */
+    flex-wrap: wrap;
+    gap: 15px; /* เพิ่มระยะห่างระหว่างไอคอน */
+  }
+
+  .icon p {
+    display: block;
+    text-align: center;
+    font-size: 1em; /* ขยายขนาดข้อความให้ใหญ่ขึ้น */
+    margin-top: 15px;
+    opacity: 0.7; /* เพิ่มความชัดของข้อความ */
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .icon {
+    min-height: 15vh; /* ปรับขนาดความสูงให้น้อยลง */
+    padding: 20px 10px;
+    margin-top: 80%;
+  }
+
+  .ficon {
+    flex-direction: row; /* ให้ไอคอนเรียงแนวนอน */
+    flex-wrap: wrap;
+    gap: 2px; /* เพิ่มระยะห่างระหว่างไอคอน */
+  }
+
+  .icon p {
+    display: block;
+    text-align: center;
+    font-size: 1em; /* ขยายขนาดข้อความให้ใหญ่ขึ้น */
+    margin-top: 15px;
+    opacity: 0.7; /* เพิ่มความชัดของข้อความ */
+  }
+}
+
+
+
+

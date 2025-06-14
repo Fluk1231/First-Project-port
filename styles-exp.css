@@ -1,0 +1,809 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+* {
+  text-decoration: none;
+}
+
+* {
+  list-style: none;
+
+}
+
+.container {
+  position: relative;
+  min-height: 90vh;
+  background-color: #ffffff;
+
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10;
+  width: 100%;
+  height: 100%;
+  /* background-image: url(imeges/P1.jpg); */
+  background-color: #ffffff;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(30%);
+  z-index: -1;
+
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu.transparent {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.logo a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: #000;
+  font-size: 20px;
+}
+
+.logo a:hover{
+  opacity: 0.5;
+}
+
+.logo p{
+  float: left;
+  display: block;
+  padding-left: 8px;
+  padding-top: 10px;
+  font-size: 1rem;
+  color: #000000;
+  transition: 0.5s;
+}
+
+.menu ul {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li{
+  padding: 0 14px;
+}
+.menu li a {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.menu li a:hover {
+  color: #644002;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1100;
+}
+
+.menu-toggle .menu-icon {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #333;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.menu-toggle .menu-icon::before,
+.menu-toggle .menu-icon::after {
+  content: "";
+  width: 25px;
+  height: 2px;
+  background-color: #333; 
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-toggle .menu-icon::before {
+  top: -8px;
+}
+
+.menu-toggle .menu-icon::after {
+  top: 8px;
+}
+
+@media (max-width: 768px) {
+  .menu ul {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 20px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .menu ul.show {
+    display: flex;
+  }
+
+  .menu li a {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-toggle.active .menu-icon {
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle.active .menu-icon::before {
+    transform: rotate(90deg);
+    top: 0;
+  }
+
+  .menu-toggle.active .menu-icon::after {
+    transform: rotate(90deg);
+    top: 0;
+    opacity: 0;
+  }
+}
+
+/* Skill */
+/* .skill {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  min-height: 60vh;
+  background-color: rgb(255, 255, 255);
+}
+
+.skill h2 {
+  text-align: center;
+  padding: 90px;
+  font-size: 2.2em;
+
+}
+
+.skill .grid-skill1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 0;
+  margin-top: -50px;
+  position: relative;
+
+}
+
+.skill .grid1 {
+  text-align: center;
+  font-size: 18px;
+
+}
+
+.sbg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-position: cover;
+} */
+
+
+/* ---- General Styles ---- */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Experience Section ---- */
+.experience {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.experience h1 {
+  text-align: center;
+  font-size: 2.2em;
+  color: #333;
+}
+
+/* ---- Timeline Container ---- */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+/* ---- Timeline Line on the Left ---- */
+.timeline {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 2px;
+  height: 100%;
+  background-color: #000000;
+  z-index: 0;
+}
+
+/* ---- Job Cards ---- */
+.job {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  margin: 30px 51px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.job:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.job1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  margin: 30px 51px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.job1:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+/* ---- Circles Indicator on Timeline (Positioned on Left) ---- */
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #000000;
+  border-radius: 50%;
+  position: absolute;
+  left: -30px;
+  z-index: 1;
+}
+
+/* ---- Job Content Information ---- */
+.job-info {
+  width: 100%;
+  margin-left: 20px;
+}
+
+.job-info h2 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.job-info h4 {
+  font-size: 1em;
+  color: #333;
+  margin: 5px 0;
+}
+
+.job-info h5 {
+  font-size: 0.9em;
+  color: #666;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-align: end;
+}
+
+.job-info h5:hover {
+  color: #333;
+}
+
+.job1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  margin: 30px 51px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  z-index: 1;
+}
+.job1 ul li{
+  list-style-type: initial;
+  font-size: 1em;
+  color: #333;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+/* ---- Overlay and Popup ---- */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.popup.active {
+  display: block;
+}
+
+.popup-close {
+  font-size: 1.5em;
+  color: #888;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.popup-close:hover {
+  color: #333;
+}
+
+.popup h3 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popup-content {
+  font-size: 1em;
+  color: #333;
+}
+.popup-content ul {
+  padding-left: 20px; /* เพิ่มระยะห่างทางซ้าย */
+}
+
+.popup-content li {
+  list-style-type: initial;
+  margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างรายการ */
+  font-size: 1em;
+  color: #333;
+}
+
+
+
+/* ---- Responsive Design ---- */
+@media screen and (max-width: 768px) {
+  .timeline-container {
+      padding-left: 30px;
+  }
+
+  .job {
+      flex-basis: 100%;
+  }
+
+  .job1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    margin: 30px 51px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .circle {
+    width: 20px;
+    height: 20px;
+    background-color: #000000;
+    border-radius: 50%;
+    position: absolute;
+    left: -40px;
+    z-index: 1;
+  }
+  .job-info {
+    width: 100%;
+    margin-left: 10px;
+  }
+  
+  .job-info h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .job-info h4 {
+    font-size: 0.75em;
+    color: #333;
+    margin: 5px 0;
+  }
+  
+  .job-info h5 {
+    font-size: 0.9em;
+    color: #666;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: end;
+  }
+
+  .job1 ul li{
+    list-style-type: initial;
+    font-size: 0.75em;
+    color: #333;
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .popup.active {
+    display: block;
+  }
+  
+  .popup-close {
+    font-size: 1.5em;
+    color: #888;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+  
+  .popup-close:hover {
+    color: #333;
+  }
+  
+  .popup h3 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .popup-content {
+  
+    font-size: 0.85em;
+    color: #333;
+  }
+  .popup-content ul {
+    padding-left: 10px; /* เพิ่มระยะห่างทางซ้าย */
+  }
+  
+  .popup-content li {
+    margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างรายการ */
+    font-size: 1em;
+    color: #333;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .timeline-container {
+      padding-left: 30px;
+  }
+
+  .job {
+      flex-basis: 100%;
+  }
+
+  .job1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    margin: 30px 51px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .circle {
+    width: 20px;
+    height: 20px;
+    background-color: #000000;
+    border-radius: 50%;
+    position: absolute;
+    left: -40px;
+    z-index: 1;
+  }
+  .job-info {
+    width: 100%;
+    margin-left: 5px;
+  }
+  
+  .job-info h2 {
+    font-size: 0.75em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .job-info h4 {
+    font-size: 0.65em;
+    color: #333;
+    margin: 5px 0;
+  }
+  
+  .job-info h5 {
+    font-size: 0.5em;
+    color: #666;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: end;
+  }
+
+  .job1 ul li{
+    list-style-type: initial;
+    font-size: 0.65em;
+    color: #333;
+    margin: 5px 0;
+    font-weight: bold;
+  }
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .popup.active {
+    display: block;
+  }
+  
+  .popup-close {
+    font-size: 1.5em;
+    color: #888;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+  
+  .popup-close:hover {
+    color: #333;
+  }
+  
+  .popup h3 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .popup-content {
+  
+    font-size: 0.85em;
+    color: #333;
+  }
+  .popup-content ul {
+    padding-left: 10px; /* เพิ่มระยะห่างทางซ้าย */
+  }
+  
+  .popup-content li {
+    margin-bottom: 10px; /* เพิ่มระยะห่างระหว่างรายการ */
+    font-size: 1em;
+    color: #333;
+  }
+}
+
+
+/* footer */
+.icon {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  min-height: 20vh;
+}
+
+.ficon {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.ficon a {
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  margin: 10px;
+  border-radius: 50px;
+  height: auto;
+}
+
+.ficon a i {
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  opacity: 0.9;
+  height: auto;
+}
+
+.ficon a:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 0.5s;
+}
+
+.ficon a i:hover {
+  color: rgb(0, 0, 0);
+  transition: 0.2s;
+}
+
+.icon ul {
+  display: flex;
+  justify-content: center;
+}
+
+.icon ul li a {
+  color: rgb(0, 0, 0);
+  margin: 10px;
+  font-size: 1em;
+  opacity: 0.5;
+  transition: 0.5s;
+  font-weight: bold;
+  text-decoration-line: underline;
+}
+
+.icon ul li a:hover {
+  opacity: 1;
+}
+
+.icon p {
+  color: rgb(0, 0, 0);
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: 0.8em;
+  transition: 0.5s;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+/* Media Queries */
+/* Tablet (481px - 768px) */
+@media screen and (max-width: 768px) {
+  .icon {
+    margin: 50px auto;
+    min-height: 15vh;
+    max-width: 90%;
+    margin-top: 90px;
+  }
+
+  .ficon {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .icon p {
+    font-size: 0.9em;
+  }
+}
+
+/* Mobile (≤480px) */
+@media screen and (max-width: 480px) {
+  .icon {
+    margin: 30px auto;
+    min-height: 10vh;
+    max-width: 95%;
+    margin-top: 100px;
+  }
+
+  .ficon {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ficon a {
+    padding: 8px;
+    margin: 5px;
+  }
+
+  .ficon a i {
+    font-size: 1.2em;
+  }
+
+  .icon p {
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+}
